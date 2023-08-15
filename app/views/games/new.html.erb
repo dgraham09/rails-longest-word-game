@@ -1,0 +1,19 @@
+<h1 id="heading" >New Game</h1>
+<div id="cardContainer" class="d-flex justify-content-center align-items-center">
+  <ul>
+    <% @letters.each do |letter| %>
+      <li class="letter"><%= letter %></li>
+    <% end %>
+  </ul>
+</div>
+<p></p>
+<div class="formContainer"  data-turbo="false">
+  <form action="/score" method="post">
+    <label for="word">What is the longest word you can find?</label>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @letters %>
+
+    <input type="text" name="word">
+    <input type="submit" class="btn-primary rounded">
+  </form>
+</div>
